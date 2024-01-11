@@ -2,7 +2,6 @@ package com.victoralves.algafood.di.notificacao;
 
 import com.victoralves.algafood.di.modelo.Cliente;
 import org.springframework.stereotype.Component;
-
 @Component
 public class NotificadorSms implements Notificador {
 

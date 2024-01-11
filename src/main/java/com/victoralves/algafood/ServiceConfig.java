@@ -10,7 +10,7 @@ import java.util.List;
 @Configuration
 public class ServiceConfig {
     @Bean
-    public AtivacaoClienteService ativacaoClienteService(List<Notificador> notificador){
+    public AtivacaoClienteService ativacaoClienteService(Notificador notificador){
         return  new AtivacaoClienteService(notificador);
     }
 
