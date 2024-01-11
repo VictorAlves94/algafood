@@ -2,21 +2,27 @@ package com.victoralves.algafood.di.service;
 
 import com.victoralves.algafood.di.modelo.Cliente;
 import com.victoralves.algafood.di.notificacao.Notificador;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class AtivacaoClienteService {
-    private Notificador notificador;
+    @Autowired(required = false)
+    private List<Notificador> notificadores;
 
-    public AtivacaoClienteService(Notificador notificador) {
-        this.notificador = notificador;
-
-        System.out.println("AtivacaoClienteService: " + notificador);
+    public AtivacaoClienteService(List<Notificador> notificador) {
     }
 
     public void ativar(Cliente cliente) {
         cliente.ativar();
 
-        notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+        for (Notificador notificador : notificadores){
+          notificador.notificar(cliente, "Seu cadastro no sistema está atívo!");
+      }
     }
+
+
 }

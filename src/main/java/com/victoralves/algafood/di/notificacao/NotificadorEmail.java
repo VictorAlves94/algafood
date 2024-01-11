@@ -1,7 +1,9 @@
 package com.victoralves.algafood.di.notificacao;
 
 import com.victoralves.algafood.di.modelo.Cliente;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NotificadorEmail implements Notificador {
 
     private boolean caixaAlta;
