@@ -1,14 +1,15 @@
 package com.victoralves.algafood.di.service;
 
 import com.victoralves.algafood.di.modelo.Cliente;
+import com.victoralves.algafood.di.notificacao.NivelUrgencia;
 import com.victoralves.algafood.di.notificacao.Notificador;
+import com.victoralves.algafood.di.notificacao.TipoNotificador;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AtivacaoClienteService {
-    @Qualifier("normal")
+    @TipoNotificador(NivelUrgencia.SEM_URGENCIA)
     @Autowired
     private Notificador notificador;
 

@@ -2,9 +2,9 @@ package com.victoralves.algafood.di.notificacao;
 
 import com.victoralves.algafood.di.modelo.Cliente;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-@Qualifier("normal")
+
+@TipoNotificador(NivelUrgencia.SEM_URGENCIA)
 @Component
 public class NotificadorEmail implements Notificador {
     @Override

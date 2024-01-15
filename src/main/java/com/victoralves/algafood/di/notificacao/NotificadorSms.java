@@ -1,10 +1,8 @@
 package com.victoralves.algafood.di.notificacao;
 
 import com.victoralves.algafood.di.modelo.Cliente;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-@Qualifier("urgente")
+@TipoNotificador(NivelUrgencia.URGENTE)
 @Component
 public class NotificadorSms implements Notificador {
 
