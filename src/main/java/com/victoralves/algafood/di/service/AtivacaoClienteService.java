@@ -13,17 +13,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class AtivacaoClienteService {
 
-//    @TipoNotificador(NivelUrgencia.SEM_URGENCIA)
-//    @Autowired
-//    private Notificador notificador;
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
     public void ativar(Cliente cliente) {
         cliente.ativar();
-        // notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
-        //dizer para o container que o cliente esta ativo nesse momento
-
         eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente));
     }
 
