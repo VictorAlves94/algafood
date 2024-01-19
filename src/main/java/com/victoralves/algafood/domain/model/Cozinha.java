@@ -6,15 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="tab_cozinhas")
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
 public class Cozinha {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="nome_cozinha")
     private String nome;
 
 
