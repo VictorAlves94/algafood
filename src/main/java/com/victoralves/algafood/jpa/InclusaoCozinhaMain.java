@@ -25,7 +25,9 @@ public class InclusaoCozinhaMain {
         cozinha2.setNome("Japonesa");
 
         System.out.println("Gravando cozinha Brasileira");
-        cozinha1 = cadastroCozinha.adicionar(cozinha1);
+        cadastroCozinha.adicionar(cozinha1);
+
+
         System.out.println("Gravando cozinha Japonesa");
         cozinha2 = cadastroCozinha.adicionar(cozinha2);
 
