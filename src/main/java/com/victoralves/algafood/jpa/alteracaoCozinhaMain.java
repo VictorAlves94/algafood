@@ -6,9 +6,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
-import java.util.List;
-
-public class buuscaCozinhaMain {
+public class alteracaoCozinhaMain {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
                 .web(WebApplicationType.NONE)
@@ -16,9 +14,19 @@ public class buuscaCozinhaMain {
 
         CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
 
-        Cozinha cozinha = cadastroCozinha.buscar(1L);
 
-            System.out.println(cozinha.getNome());
-        }
+
+
+        Cozinha cozinha = new Cozinha();
+        cozinha.setId(1L);
+        cozinha.setNome("Brasileira");
+        cadastroCozinha.adicionar(cozinha);
+
+
+
+        System.out.printf("%d - %s\n", cozinha.getId(), cozinha.getNome());
+
+
+    }
 
 }
