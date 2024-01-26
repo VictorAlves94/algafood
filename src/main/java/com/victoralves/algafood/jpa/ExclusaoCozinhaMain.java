@@ -2,6 +2,7 @@ package com.victoralves.algafood.jpa;
 
 import com.victoralves.algafood.AlgafoodApiApplication;
 import com.victoralves.algafood.domain.model.Cozinha;
+import com.victoralves.algafood.domain.repository.CozinhaRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
@@ -12,12 +13,12 @@ public class ExclusaoCozinhaMain {
                 .web(WebApplicationType.NONE)
                 .run(args);
 
-        CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+        CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 
         Cozinha cozinha = new Cozinha();
         cozinha.setId(1L);
 
-        cadastroCozinha.remove(cozinha);
+        cozinhaRepository.remover(cozinha);
 
 
         System.out.printf("%d - %s\n", cozinha.getId(), cozinha.getNome());
