@@ -1,28 +1,29 @@
-package com.victoralves.algafood.jpa;
+package com.victoralves.algafood.jpa.restaurante;
 
 import com.victoralves.algafood.AlgafoodApiApplication;
 import com.victoralves.algafood.domain.model.Cozinha;
+import com.victoralves.algafood.domain.model.Restaurante;
 import com.victoralves.algafood.domain.repository.CozinhaRepository;
+import com.victoralves.algafood.domain.repository.RestauranteRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
-public class ExclusaoCozinhaMain {
+import java.util.List;
+
+public class ConsultaRestauranteMain {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
                 .web(WebApplicationType.NONE)
                 .run(args);
 
-        CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
+        RestauranteRepository restauranteRepository = applicationContext.getBean(RestauranteRepository.class);
 
-        Cozinha cozinha = new Cozinha();
-        cozinha.setId(1L);
+        List<Restaurante> restaurantes = restauranteRepository.listar();
+        for (Restaurante restaurante: restaurantes) {
+            System.out.println(restaurante.getNome());
 
-        cozinhaRepository.remover(cozinha);
-
-
-        System.out.printf("%d - %s\n", cozinha.getId(), cozinha.getNome());
+        }
 
     }
-
 }
