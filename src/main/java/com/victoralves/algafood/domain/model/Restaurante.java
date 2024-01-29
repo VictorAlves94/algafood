@@ -17,4 +17,6 @@ public class Restaurante {
     private String nome;
     @Column(name = "taxa_frete")
     private BigDecimal taxaFrete;
+    @ManyToOne
+    private Cozinha cozinha;
 }

@@ -20,6 +20,7 @@ public class BuscaRestauranteMain {
         Restaurante restaurante = restauranteRepository.buscar(1L);
 
             System.out.println(restaurante.getNome());
+            System.out.println(restaurante.getTaxaFrete());
         }
 
 }

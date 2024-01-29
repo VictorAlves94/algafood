@@ -21,11 +21,10 @@ public class AlteracaoRestauranteMain {
 
 
 
-
         Restaurante restaurante = new Restaurante();
         restaurante.setId(1L);
-        restaurante.setNome("Brasileira");
-        restaurante.setTaxaFrete(BigDecimal.TEN);
+        restaurante.setNome("carioca");
+        restaurante.setTaxaFrete(BigDecimal.valueOf(7.99));
         restauranteRepository.salvar(restaurante);
 
 
