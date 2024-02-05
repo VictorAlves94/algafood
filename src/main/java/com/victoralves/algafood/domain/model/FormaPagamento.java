@@ -1,5 +1,6 @@
 package com.victoralves.algafood.domain.model;
 
+
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,11 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-public class Cozinha {
+@Table(name = "formapagamento")
+public class FormaPagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String nome;
 
+    private String descricao;
 }
