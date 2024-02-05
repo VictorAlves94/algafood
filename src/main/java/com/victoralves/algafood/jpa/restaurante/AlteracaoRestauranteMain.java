@@ -23,7 +23,7 @@ public class AlteracaoRestauranteMain {
 
         Restaurante restaurante = new Restaurante();
         restaurante.setId(1L);
-        restaurante.setNome("carioca");
+        restaurante.setNome("Carioca");
         restaurante.setTaxaFrete(BigDecimal.valueOf(7.99));
         restauranteRepository.salvar(restaurante);
 
