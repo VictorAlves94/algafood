@@ -1,9 +1,7 @@
 package com.victoralves.algafood.jpa.restaurante;
 
 import com.victoralves.algafood.AlgafoodApiApplication;
-import com.victoralves.algafood.domain.model.Cozinha;
 import com.victoralves.algafood.domain.model.Restaurante;
-import com.victoralves.algafood.domain.repository.CozinhaRepository;
 import com.victoralves.algafood.domain.repository.RestauranteRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;

@@ -1,9 +1,7 @@
 package com.victoralves.algafood.jpa.permissao;
 
 import com.victoralves.algafood.AlgafoodApiApplication;
-import com.victoralves.algafood.domain.model.Cozinha;
 import com.victoralves.algafood.domain.model.Permissao;
-import com.victoralves.algafood.domain.repository.CozinhaRepository;
 import com.victoralves.algafood.domain.repository.PermissaoRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;

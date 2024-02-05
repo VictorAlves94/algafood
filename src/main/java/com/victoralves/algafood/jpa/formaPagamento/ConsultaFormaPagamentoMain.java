@@ -1,9 +1,7 @@
 package com.victoralves.algafood.jpa.formaPagamento;
 
 import com.victoralves.algafood.AlgafoodApiApplication;
-import com.victoralves.algafood.domain.model.Cozinha;
 import com.victoralves.algafood.domain.model.FormaPagamento;
-import com.victoralves.algafood.domain.repository.CozinhaRepository;
 import com.victoralves.algafood.domain.repository.FormaPagamentoRepository;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
