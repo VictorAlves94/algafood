@@ -1,6 +1,8 @@
 package com.victoralves.algafood.api.controllers;
 
 import com.ctc.wstx.shaded.msv_core.util.Uri;
+import com.victoralves.algafood.domain.exception.EntidadeEmUsoException;
+import com.victoralves.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.victoralves.algafood.domain.model.Cozinha;
 import com.victoralves.algafood.domain.model.CozinhasXmlWrapper;
 import com.victoralves.algafood.domain.repository.CozinhaRepository;
@@ -67,15 +69,14 @@ public class CozinhaController {
 
     @DeleteMapping("/{cozinha_id}")
     public ResponseEntity<Cozinha> delete(@PathVariable Long cozinha_id){
-        try{
-            Cozinha cozinhaAtual = cozinhaRepository.buscar(cozinha_id);
+        try {
+            cozinhaService.excluir(cozinha_id);
+            return ResponseEntity.noContent().build();
 
-            if (cozinhaAtual != null) {
-                cozinhaRepository.remover(cozinhaAtual);
-                return ResponseEntity.noContent().build();
-            }
+        }catch (EntidadeNaoEncontradaException e){
             return ResponseEntity.notFound().build();
-        }catch (DataIntegrityViolationException ex){
+        }catch (
+    EntidadeEmUsoException ex){
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
