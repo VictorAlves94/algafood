@@ -1,18 +1,13 @@
 package com.victoralves.algafood.api.controllers;
 
-import com.ctc.wstx.shaded.msv_core.util.Uri;
 import com.victoralves.algafood.domain.exception.EntidadeEmUsoException;
 import com.victoralves.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.victoralves.algafood.domain.model.Cozinha;
-import com.victoralves.algafood.domain.model.CozinhasXmlWrapper;
 import com.victoralves.algafood.domain.repository.CozinhaRepository;
 import com.victoralves.algafood.service.CozinhaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,15 +21,11 @@ public class CozinhaController {
 
     @Autowired
     private CozinhaService cozinhaService;
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping//(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Cozinha> listar(){
     return cozinhaRepository.listar();
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    public CozinhasXmlWrapper listarXml(){
-        return new CozinhasXmlWrapper(cozinhaRepository.listar());
-    }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
