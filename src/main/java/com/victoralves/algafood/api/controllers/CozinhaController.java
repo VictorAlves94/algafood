@@ -21,6 +21,9 @@ public class CozinhaController {
 
     @Autowired
     private CozinhaService cozinhaService;
+
+
+
     @GetMapping//(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Cozinha> listar(){
     return cozinhaRepository.listar();
