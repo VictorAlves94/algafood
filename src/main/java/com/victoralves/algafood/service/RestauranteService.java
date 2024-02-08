@@ -50,7 +50,6 @@ public void excluir(Long restaurante_id){
                 String.format("Cozinha de código %d não pode ser removida, pois está em uso.", restaurante_id)
         );
 
-
         }
 
 }

@@ -1,5 +1,6 @@
 package com.victoralves.algafood.api.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.victoralves.algafood.domain.exception.EntidadeEmUsoException;
 import com.victoralves.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.victoralves.algafood.domain.model.Restaurante;
@@ -9,9 +10,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/restaurantes")
@@ -73,6 +77,19 @@ public class RestauranteController {
 
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> atualizarParcial(@PathVariable Long id,@RequestBody Map<String, Object> campos){
+        Restaurante restauranteAtual = repository.buscar(id);
+        if (restauranteAtual == null){
+            return ResponseEntity.notFound().build();
+        }
+        merge(campos, restauranteAtual);
+
+    return atualizar(id, restauranteAtual);
+
+    }
+
+
     @DeleteMapping("/{restaurante_id}")
     public ResponseEntity<Restaurante> delete(@PathVariable Long restaurante_id){
         try {
@@ -86,7 +103,22 @@ public class RestauranteController {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
+
+    private void merge(Map<String, Object> camposOrigem, Restaurante restauranteDestino){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Restaurante restauranteOrigem = objectMapper.convertValue(camposOrigem, Restaurante.class);
+
+
+        camposOrigem.forEach((nomePropriedade, valorPropiedade)-> {
+            Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade);
+            field.setAccessible(true);
+
+            Object novoValor = ReflectionUtils.getField(field,restauranteOrigem);
+
+            ReflectionUtils.setField(field, restauranteDestino ,novoValor);
+        });
     }
+}
 
 
 
