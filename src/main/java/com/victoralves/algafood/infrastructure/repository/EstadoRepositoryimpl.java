@@ -2,12 +2,14 @@ package com.victoralves.algafood.infrastructure.repository;
 
 import com.victoralves.algafood.domain.model.Cozinha;
 import com.victoralves.algafood.domain.model.Estado;
+import com.victoralves.algafood.domain.model.Restaurante;
 import com.victoralves.algafood.domain.repository.CozinhaRepository;
 import com.victoralves.algafood.domain.repository.EstadoRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,8 +38,12 @@ public class EstadoRepositoryimpl implements EstadoRepository {
 
     @Transactional
     @Override
-    public void remover(Estado estado){
-        estado = buscar(estado.getId());
-        manager.remove(estado);
+    public void remover(Long id){
+            Estado estado = buscar(id);
+            if (estado == null) {
+                throw new EmptyResultDataAccessException(1);
+            }
+            manager.remove(estado);
+        }
     }
-}
+
