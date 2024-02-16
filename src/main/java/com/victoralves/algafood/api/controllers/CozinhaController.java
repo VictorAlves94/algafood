@@ -26,7 +26,7 @@ public class CozinhaController {
 
     @GetMapping//(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Cozinha> listar(){
-    return cozinhaRepository.listar();
+    return cozinhaRepository.findAll();
     }
 
 

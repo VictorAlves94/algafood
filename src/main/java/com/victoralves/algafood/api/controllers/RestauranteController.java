@@ -29,13 +29,13 @@ public class RestauranteController {
 
     @GetMapping
     public List<Restaurante> listar() {
-        return repository.listar();
+        return repository.findAll();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public ResponseEntity<Restaurante> buscar(@PathVariable Long id) {
-        Restaurante restaurante = repository.buscar(id);
+        Restaurante restaurante = repository.findby(id);
 
 
         if (restaurante != null) {
